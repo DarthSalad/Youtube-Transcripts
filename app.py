@@ -36,7 +36,8 @@ def show_transcripts(video_id):
     # print(summary)
     summarized_sub(summary)
 
-show_transcripts('u7bSW99yMIY')
+vid_id = input("Enter the YT video id(the part after the 'v='): ")
+show_transcripts(vid_id)
 
 if __name__ == '__main__':
     app.run()
