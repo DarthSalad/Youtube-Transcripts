@@ -5,12 +5,12 @@ colorama==0.4.4
 DateTime==4.3
 filelock==3.0.12
 Flask==2.0.1
-huggingface-hub==0.0.12
+huggingface-hub==0.0.12  
 idna==3.2
-itsdangerous==2.0.1
+itsdangerous==2.0.1      
 Jinja2==3.0.1
 joblib==1.0.1
-MarkupSafe==2.0.1
+MarkupSafe==2.0.1        
 numpy==1.21.1
 packaging==21.0
 pyparsing==2.4.7
@@ -18,7 +18,8 @@ pytz==2021.1
 PyYAML==5.4.1
 regex==2021.8.3
 requests==2.26.0
-sacremoses==0.0.45
+sacremoses==0.0.45       
+sentencepiece==0.1.96
 six==1.16.0
 tokenizers==0.10.3
 torch==1.9.0

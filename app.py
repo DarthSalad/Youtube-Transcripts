@@ -36,7 +36,7 @@ def show_transcripts(video_id):
     # print(summary)
     summarized_sub(summary)
 
-show_transcripts('YtIw3wqHeNY')
+show_transcripts('u7bSW99yMIY')
 
 if __name__ == '__main__':
     app.run()
