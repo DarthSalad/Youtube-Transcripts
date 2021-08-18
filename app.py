@@ -1,16 +1,44 @@
 import datetime
-from flask import Flask
+from flask import Flask, jsonify
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from youtube_transcript_api import YouTubeTranscriptApi
 
 app = Flask(__name__)
-app.route('/')
-def index_page():
-    return "Yo"
 
-app.route('/time', methods=['GET'])
+tasks = [
+    {
+        'id': 1,
+        'title': u'Buy groceries',
+        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
+        'done': False
+    },
+    {
+        'id': 2,
+        'title': u'Learn Python',
+        'description': u'Need to find a good Python tutorial on the web', 
+        'done': False
+    }
+]
+
+@app.route('/summarize/api/v1.0/tasks', methods=['GET'])
+def get_tasks():
+    return jsonify({'tasks': tasks})
+
+@app.route('/')
+def index_page():
+    return "test success"
+
+@app.route('/time', methods=['GET'])
 def get_time():
     return str(datetime.datetime.now())
+
+@app.errorhandler(400)
+def not_found(error):
+    return make_response(jsonify( { 'error': 'Bad request' } ), 400)
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify( { 'error': 'Not found' } ), 404)
 
 def summarized_sub(script):
     model = T5ForConditionalGeneration.from_pretrained("t5-base")
@@ -36,8 +64,8 @@ def show_transcripts(video_id):
     # print(summary)
     summarized_sub(summary)
 
-vid_id = input("Enter the YT video id(the part after the 'v='): ")
-show_transcripts(vid_id)
+# vid_id = input("Enter the YT video id(the part after the 'v='): ")
+# show_transcripts(vid_id)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
