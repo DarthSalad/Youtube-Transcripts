@@ -32,14 +32,6 @@ def index_page():
 def get_time():
     return str(datetime.datetime.now())
 
-@app.errorhandler(400)
-def not_found(error):
-    return make_response(jsonify( { 'error': 'Bad request' } ), 400)
-
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify( { 'error': 'Not found' } ), 404)
-
 def summarized_sub(script):
     model = T5ForConditionalGeneration.from_pretrained("t5-base")
     tokenizer = T5Tokenizer.from_pretrained("t5-base")
