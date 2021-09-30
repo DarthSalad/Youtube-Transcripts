@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask, jsonify, redirect
+from flask import Flask, jsonify, redirect, request
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from youtube_transcript_api import YouTubeTranscriptApi
 
@@ -9,9 +9,10 @@ app = Flask(__name__)
 def test():
     return "test success"
 
-@app.route('/test2')
+@app.route('/test2', methods=['POST', 'GET'])
 def test2():
-    return redirect("https://github.com/DarthSalad")
+    url = request.form['link']
+    return url
 
 def summarized_sub(script):
     model = T5ForConditionalGeneration.from_pretrained("t5-base")

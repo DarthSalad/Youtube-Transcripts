@@ -5,18 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summarizer Prompt</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
-        <h1>SUMMARY</h1>
-        <form id="form">
-            <button class="btn" type="submit">
-                <span>Generate Summary</span>
+        <h1>SUMMARIZER</h1>
+        <form action = "http://localhost:5000/test2" method = "post" id="form">
+            <p>Enter the Link:</p>
+            <p><input type="text" name="link" /></p>
+            <!-- <button class="btn" type="submit">
+                <span>GENERATE SUMMARY</span>
+            </button> -->
+            <button type="submit" class="btn btn-primary">
+                GENERATE SUMMARY
             </button>
         </form>
         <p id="text"></p>
     </div>
-    <script src="./script.js" defer></script>
+    <!-- <script src="./script.js" defer></script> -->
 </body>
 </html>
