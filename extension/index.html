@@ -8,21 +8,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body onload="clearForm()">
     <div class="container">
         <h1>SUMMARIZER</h1>
-        <form action = "http://localhost:5000/test2" method = "post" id="form">
+        <form name="MyForm" action = "http://localhost:5000/api/get_link" method = "post" id="form">
+        <!-- <form name="MyForm" method="post" id="form"> -->
             <p>Enter the Link:</p>
             <p><input type="text" name="link" /></p>
-            <!-- <button class="btn" type="submit">
-                <span>GENERATE SUMMARY</span>
-            </button> -->
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="btn" onclick="addText()">
                 GENERATE SUMMARY
             </button>
         </form>
         <p id="text"></p>
     </div>
-    <!-- <script src="./script.js" defer></script> -->
+    <script src="./script.js" defer></script>
 </body>
 </html>

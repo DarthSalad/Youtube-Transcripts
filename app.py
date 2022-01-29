@@ -5,16 +5,20 @@ from youtube_transcript_api import YouTubeTranscriptApi
 
 app = Flask(__name__)
 
-@app.route('/test')
-def test():
-    return "test success"
+@app.route('/')
+def index():
+    return "Home Page"
 
-@app.route('/test2', methods=['POST', 'GET'])
+@app.route('/api/get_link')
 def test2():
-    url = request.form['link']
+    url = request.args.get('url')
+    # print(url)
     return url
 
-def summarized_sub(script):
+@app.route('/api/summarize')
+def summarized_sub():
+    url = request.args.get('url')
+    script = show_transcripts()
     model = T5ForConditionalGeneration.from_pretrained("t5-base")
     tokenizer = T5Tokenizer.from_pretrained("t5-base")
     inputs = tokenizer.encode("summarize: " + script, return_tensors="pt", max_length=2048, truncation=True)
@@ -29,19 +33,18 @@ def summarized_sub(script):
     # print(tokenizer.decode(outputs[0]))
     return tokenizer.decode(outputs[0])
 
-@app.route('/api/summarize', methods=['GET'])
+@app.route('/api/transcript')
 def show_transcripts():
-    vid_id = input("Enter the YT link: ")[-11:]
+    url = request.args['url']
+    # print(url)
     summary = ""
-    sub = YouTubeTranscriptApi.get_transcript(vid_id)
+    sub = YouTubeTranscriptApi.get_transcript(url)
     for params in sub:
         # print(params['text'], end=' ')
         summary += params['text']
         summary += " "
     # print(summary)
-    summarized_sub(summary)
-
-# show_transcripts(vid_id[-11:])
+    return summary
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(port=8080, debug = True)
