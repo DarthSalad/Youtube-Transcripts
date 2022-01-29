@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;600;700;1000;2000&family=Open+Sans&display=swap');
 
-/* html{
-    height: 100%;
-    width: 100%;
-} */
-
 body{
     background-color: rgb(34, 39, 46);
     color: rgb(255, 255, 255);
@@ -19,11 +14,6 @@ body{
 
 h1{
     text-align: center;
-}
-
-form{
-    width: 400px;
-    margin: 0 auto;
 }
 
 p{
@@ -44,15 +34,18 @@ p{
     transition: background-color .3s;
 }
 
-.btn:hover, .btn:focus{
-    background-color: rgb(84, 197, 228);
+.btn:hover{
+    background-color: rgb(255, 255, 255);
+}
+.btn:focus{
+    background-color: rgb(106, 106, 106);
 }
 
-.btn:before{
+/* .btn:before{
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     display: block;
     transform: translate(-50%,-50%);
-}
+} */

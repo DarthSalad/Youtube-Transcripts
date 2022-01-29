@@ -1,13 +1,11 @@
 const form = document.getElementById("form");
 const summary = document.getElementById("text");
 
-function clearForm(){
-    document.MyForm.reset();
-    console.log("success");
+function summarize(){
+    document.getElementById("summary").innerHTML="Summary: ";
 }
-
-function addText(){
-    document.getElementsByTagName("p")[2].innerHTML="test";
+function transcript(){
+    document.getElementById("transc").innerHTML="Transcript: ";
 }
 
 // form.onsubmit = function(x){
