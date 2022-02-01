@@ -10,22 +10,19 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body onload="clearForm()">
+<body>
     <div class="container">
         <h1>Tools</h1>
-        <!-- <form name="MyForm" action = "http://localhost:5000/api/get_link" method = "post" id="form">
-            <p>Enter the Link:</p>
-            <p><input type="text" name="link" /></p>
-            <button type="submit" class="btn btn-primary" id="btn" onclick="addText()">
-                GENERATE SUMMARY
-            </button>
-        </form> -->
-        <button type="button" class="btn btn-outline-light" id="summarize" onclick="summarize();">SUMMARIZE</button>
-        <button type="button" class="btn btn-outline-light" id="transcript" onclick="transcript();">TRANSCRIPT</button>
+        <form id="sum-form">
+            <button type="button" class="btn btn-outline-light" id="summarize-btn">SUMMARIZE</button>
+        </form>
+        <form id="trans-form">
+            <button type="button" class="btn btn-outline-light" id="transcript-btn">TRANSCRIPT</button>
+        </form>
         <p id="summary"></p>
         <p id="transc"></p>
     </div>
-    <script src="./script.js" defer></script>
+    <script src="./script.js" type="text/javascript" defer></script>
 </body>
 
 </html>

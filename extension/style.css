@@ -7,7 +7,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 500px;
+    max-width: 900px;
     zoom: -1;
     /* box-sizing: border-box; */
 }

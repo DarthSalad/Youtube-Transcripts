@@ -1,24 +1,25 @@
-const form = document.getElementById("form");
-const summary = document.getElementById("text");
+const form1 = document.getElementById("sum-form");
+const form2 = document.getElementById("trans-form");
+const summary = document.getElementById("summary");
+const transcript = document.getElementById("transc");
 
 function summarize(){
-    document.getElementById("summary").innerHTML="Summary: ";
+    summary.innerHTML="Summary: ";
 }
-function transcript(){
-    document.getElementById("transc").innerHTML="Transcript: ";
+function transc(){
+    transcript.innerHTML="Transcript: ";
 }
+form1.onsubmit = function(e){
+    e.preventDefault();
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        chrome.tabs.sendMessage(tabs[0].id, {"message": "GENERATE"}, function(response){console.log('response')});
+    });
+};
 
-// form.onsubmit = function(x){
-//     x.preventDefault();
-//     chrome.tabs.query({active:true, currentWindow: true}, function(tabs){
-//         chrome.tabs.sendMessage(tabs[0].id, {"message": "Generate"}, function(response){console.log("test")});
-//     });
-// };
-
-// chrome.runtime.onMessage.addListener(
-//     function(request, sender, sendResponse){
-//         if(request.msg == "RESULT"){
-//             summary.innerHTML += request.data;
-//         } 
-//     }
-// );
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if(request.msg === "RESULT"){
+            summary += request.data;
+        }
+    }
+);
